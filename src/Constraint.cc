@@ -13,42 +13,14 @@
 # or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License    #
 # for more details: <https://www.gnu.org/licenses/>.                          #
 ###############################################################################
- */
+*/
 
 
-#include "Individual.h"
+#include "Constraint.h"
 
 using namespace EmiROOT;
 
-Individual::Individual() {}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-Individual::Individual(int n) :
-m_position(n, 0),
-m_has_velocity(false) {
-  m_cost = std::numeric_limits<double>::max();
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-void Individual::setCost(double t) {
-  m_cost = t;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-void Individual::setPosition(const std::vector<double>& t) {
-  m_position = t;
-}
-
-std::size_t Individual::getDimension() const {
-  return m_position.size();
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-double Individual::getCost() {
-  return m_cost;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+Constraint::Constraint(const Function& f, const Inequality& i) :
+m_function(f),
+m_inequality(i)
+{};

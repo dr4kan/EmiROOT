@@ -3,6 +3,7 @@ project(EmiROOT VERSION 1.0.1 DESCRIPTION "EmiROOT: Evolutionary minimizer for R
 include(GNUInstallDirs)
 
 include_directories(include)
+set(CMAKE_CXX_FLAGS "-std=c++17 -Werror -g -O3")
 
 # ls -1 src/*.cc
 # list of headers

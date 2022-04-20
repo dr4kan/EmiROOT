@@ -16,84 +16,71 @@
  */
 
 
-#include "Random.h"
+#include "Parameter.h"
 
-using std::chrono::duration_cast;
-using std::chrono::milliseconds;
-using std::chrono::system_clock;
 using namespace EmiROOT;
 
-Random::Random() {
-  m_seed = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+Parameter::Parameter(const std::string& t_name,
+                     double t_min, double t_max,
+                     bool t_int) : m_name(t_name),
+                     m_min_val(t_min),
+                     m_max_val(t_max),
+                     m_integer(t_int) {}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+
+Parameter::Parameter() : Parameter("", 0., 0., false) {}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+
+Parameter::Parameter(const std::string& t_name) : Parameter(t_name, 0., 0., false) {}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+
+void Parameter::setName(const std::string& t_name) {
+  m_name = t_name;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-Random::Random(uint64_t seed) : m_seed(seed) {}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-double Random::rand() {
-  uint64_t x = next();
-  return toDouble(x);
+void Parameter::setRange(double t_min,  double t_max) {
+  m_min_val = t_min;
+  m_max_val = t_max;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-double Random::rand(double t_min, double t_max) {
-  return (t_max - t_min)*rand() + t_min;
+void Parameter::setIsInteger(bool t_int) {
+  m_integer = t_int;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-std::vector<double> Random::randVector(std::size_t n, double t_min, double t_max) {
-  std::vector<double> v(n);
-  for (std::size_t i = 0; i < n; ++i) v[i] = rand(t_min, t_max);
-  return v;
+const std::string& Parameter::getName() const {
+  return m_name;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-uint64_t Random::randUInt(uint64_t t_min, uint64_t t_max) {
-  uint64_t x, r;
-  do {
-    x = next();
-    r = x % (t_max - t_min);
-  } while (x - r > (t_min - t_max));
-  return r + t_min;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-double Random::norm() {
-  double u1 = rand();
-  double u2 = rand();
-  double pi = 3.14159265358979323846;
-  return sqrt(-2*log(u1))*cos(2*pi*u2);
+double Parameter::getMin() const {
+  return m_min_val;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-double Random::norm(double t_mean, double t_sigma) {
-  return norm()*t_sigma + t_mean;
+double Parameter::getMax() const {
+  return m_max_val;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-uint64_t Random::next() {
-  uint64_t z = (m_seed += 0x9e3779b97f4a7c15);
-  z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9;
-  z = (z ^ (z >> 27)) * 0x94d049bb133111eb;
-  return z ^ (z >> 31);
+double Parameter::getWidth() const {
+  return m_max_val-m_min_val;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-double Random::toDouble(uint64_t x) {
-  union U {
-    uint64_t i;
-    double d;
-  };
-  U u = { UINT64_C(0x3FF) << 52 | x >> 12 };
-  return u.d - 1.0;
+bool Parameter::isInteger() const {
+  return m_integer;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
