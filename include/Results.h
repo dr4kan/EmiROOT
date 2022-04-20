@@ -13,43 +13,30 @@
 # or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License    #
 # for more details: <https://www.gnu.org/licenses/>.                          #
 ###############################################################################
- */
+*/
 
 
-#include "Individual.h"
+#ifndef EmiROOT_Results_h
+#define EmiROOT_Results_h
 
-using namespace EmiROOT;
+#include "Types.h"
 
-Individual::Individual() :
-m_position(0) {}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+namespace EmiROOT {
 
+  struct OptimizationResults {
+    std::string algorithm;
+    std::size_t iterations;
+    std::size_t population_size;
+    Function obj_function;
+    Constraints constraints;
+    double best_cost;
+    Point best_parameters;
+    ParametersRange parameter_range;
+    PopulationHistory pop_history;
+    ParametersName parameter_names;
+    CostHistory cost_history;
+    bool is_maximization;
+  };
 
-Individual::Individual(int n) :
-m_position(n, 0),
-m_has_velocity(false) {
-  m_cost = std::numeric_limits<double>::max();
 }
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-void Individual::setCost(double t) {
-  m_cost = t;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-void Individual::setPosition(const Point& t) {
-  m_position = t;
-}
-
-std::size_t Individual::getDimension() const {
-  return m_position.size();
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-double Individual::getCost() {
-  return m_cost;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+#endif

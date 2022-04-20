@@ -19,14 +19,30 @@
 #ifndef EmiROOT_Types_h
 #define EmiROOT_Types_h
 
-#include "Parameter.h"
-#include "Constraint.h"
 #include <functional>
+#include <vector>
 
 namespace EmiROOT {
 
+  /// A point in the search space
   typedef std::vector<double> Point;
 
+  ///
+  typedef std::vector<Point> PopulationState;
+
+  ///
+  typedef std::vector<PopulationState> PopulationHistory;
+
+  /// Range on the parameters
+  typedef std::vector<std::vector<double> > ParametersRange;
+
+  /// Names of the parameters
+  typedef std::vector<std::string> ParametersName;
+
+  /// Cost history
+  typedef std::vector<double> CostHistory;
+
+  /// Function
   typedef std::function<double(Point)> Function;
 
   /// - L  : <

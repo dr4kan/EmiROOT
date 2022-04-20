@@ -19,9 +19,7 @@
 #ifndef EmiROOT_Individual_h
 #define EmiROOT_Individual_h
 
-#include <vector>
-#include <limits>
-#include <iostream>
+#include "Types.h"
 
 namespace EmiROOT {
 
@@ -39,16 +37,16 @@ namespace EmiROOT {
     void setCost(double);
 
     /// Set the positions
-    void setPosition(const std::vector<double>&);
+    void setPosition(const Point&);
 
     /// Return the the number of dimensions of the search space
     std::size_t getDimension() const;
 
     /// Return the position
-    std::vector<double>& getPosition() { return m_position; };
+    Point& getPosition() { return m_position; };
 
     /// Return the parameters
-    std::vector<double>& getParameters() { return m_position; };
+    Point& getParameters() { return m_position; };
 
     /// Return the cost
     double getCost();
@@ -71,9 +69,9 @@ namespace EmiROOT {
 
   protected:
 
-    std::vector<double> m_position;
-    double              m_cost;
-    bool                m_has_velocity;
+    Point  m_position;
+    double m_cost;
+    bool   m_has_velocity;
   };
 
 }
