@@ -1,7 +1,7 @@
 /*
 ###############################################################################
 # Emir: EmiR: Evolutionary minimization forR                                  #
-# Copyright (C) 2021 Davide Pagano & Lorenzo Sostero                          #
+# Copyright (C) 2022 Davide Pagano & Lorenzo Sostero                          #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -13,53 +13,42 @@
 # or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License    #
 # for more details: <https://www.gnu.org/licenses/>.                          #
 ###############################################################################
-*/
+ */
 
 
-#ifndef EmiROOT_Random_h
-#define EmiROOT_Random_h
+#include "Individual.h"
 
-#include <stdint.h>
-#include <math.h>
-#include <chrono>
-#include <vector>
+using namespace EmiROOT;
 
-namespace EmiROOT {
+Individual::Individual() {}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
-  // Class based on splitmix64 from Sebastiano Vigna
-  // https://prng.di.unimi.it/
-  class Random {
-  private:
-    uint64_t m_seed;
 
-  public:
-    Random();
+Individual::Individual(int n) :
+m_position(n, 0),
+m_has_velocity(false) {
+  m_cost = std::numeric_limits<double>::max();
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
-    Random(uint64_t);
 
-    /// Returns a double number in [0, 1]
-    double rand();
+void Individual::setCost(double t) {
+  m_cost = t;
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
-    /// Returns a double number in [a, b]
-    double rand(double, double);
 
-    /// Returns a vector of double numbers in [a, b]
-    std::vector<double> randVector(std::size_t, double, double);
-
-    /// Returns an unsigned integer number in [a, b)
-    uint64_t randUInt(uint64_t, uint64_t);
-
-    /// Returns a standard normal distributed random number
-    double norm();
-
-    /// Returns a normal distributed random number with specified mean and stardard deviation
-    double norm(double, double);
-
-  private:
-    uint64_t next();
-    double toDouble(uint64_t x);
-  };
-
+void Individual::setPosition(const std::vector<double>& t) {
+  m_position = t;
 }
 
-#endif
+std::size_t Individual::getDimension() const {
+  return m_position.size();
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+
+double Individual::getCost() {
+  return m_cost;
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/

@@ -1,7 +1,7 @@
 /*
 ###############################################################################
 # Emir: EmiR: Evolutionary minimization forR                                  #
-# Copyright (C) 2021 Davide Pagano & Lorenzo Sostero                          #
+# Copyright (C) 2022 Davide Pagano & Lorenzo Sostero                          #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -21,6 +21,7 @@
 using std::chrono::duration_cast;
 using std::chrono::milliseconds;
 using std::chrono::system_clock;
+using namespace EmiROOT;
 
 Random::Random() {
   m_seed = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();

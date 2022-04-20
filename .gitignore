@@ -1,1 +1,8 @@
 .DS_Store
+CMakeFiles/*
+CMakeCache.txt
+EmiROOT.pc
+Makefile
+cmake_install.cmake
+install_manifest.txt
+libEmiROOT.dylib

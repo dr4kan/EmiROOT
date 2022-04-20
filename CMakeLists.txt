@@ -1,20 +1,23 @@
 cmake_minimum_required(VERSION 3.9)
-project(EmiROOT VERSION 1.0.1 DESCRIPTION "EmiROOT description")
+project(EmiROOT VERSION 1.0.1 DESCRIPTION "EmiROOT: Evolutionary minimizer for ROOT")
 include(GNUInstallDirs)
 
 include_directories(include)
 
 # ls -1 src/*.cc
-add_library(EmiROOT SHARED
-src/Random.cc
-)
+# list of headers
+file(GLOB EmiROOT_SRC ${PROJECT_SOURCE_DIR}/src/*.cc)
+add_library(EmiROOT SHARED ${EmiROOT_SRC})
+
+# list of headers
+file(GLOB EmiROOT_INCLUDE ${PROJECT_SOURCE_DIR}/include/*.h)
+
 set_target_properties(
-        EmiROOT PROPERTIES
-        PUBLIC_HEADER
-include/Random.h
+    EmiROOT PROPERTIES
+    PUBLIC_HEADER "${EmiROOT_INCLUDE}"
 )
 
-configure_file(EmiROOT.pc.in EmiROOT.pc @ONLY)
+configure_file(macros/EmiROOT.pc.in EmiROOT.pc @ONLY)
 target_include_directories(EmiROOT PRIVATE .)
 
 install(
@@ -27,11 +30,4 @@ install(
 install(
     FILES ${CMAKE_BINARY_DIR}/EmiROOT.pc
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig
-)
-
-install(
-    EXPORT EmiROOTTargets
-    FILE EmiROOTTargets.cmake
-    DESTINATION "${CMAKE_INSTALL_DATADIR}/EmiROOT/cmake"
-    NAMESPACE EmiROOT::
 )

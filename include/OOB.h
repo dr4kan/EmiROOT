@@ -16,49 +16,17 @@
 */
 
 
-#ifndef EmiROOT_Random_h
-#define EmiROOT_Random_h
-
-#include <stdint.h>
-#include <math.h>
-#include <chrono>
-#include <vector>
+#ifndef EmiROOT_OOB_h
+#define EmiROOT_OOB_h
 
 namespace EmiROOT {
 
-  // Class based on splitmix64 from Sebastiano Vigna
-  // https://prng.di.unimi.it/
-  class Random {
-  private:
-    uint64_t m_seed;
-
-  public:
-    Random();
-
-    Random(uint64_t);
-
-    /// Returns a double number in [0, 1]
-    double rand();
-
-    /// Returns a double number in [a, b]
-    double rand(double, double);
-
-    /// Returns a vector of double numbers in [a, b]
-    std::vector<double> randVector(std::size_t, double, double);
-
-    /// Returns an unsigned integer number in [a, b)
-    uint64_t randUInt(uint64_t, uint64_t);
-
-    /// Returns a standard normal distributed random number
-    double norm();
-
-    /// Returns a normal distributed random number with specified mean and stardard deviation
-    double norm(double, double);
-
-  private:
-    uint64_t next();
-    double toDouble(uint64_t x);
-  };
+  /// Possible treatment of out-of-boundary solutions:
+  /// - PBC: Periodic Boundary Condition
+  /// - RBC: Reflective Boundary Condition
+  /// - BAB: Back At boundaries
+  /// - DIS: Disregard the solution and generate a new one
+  enum OOBMethod {PBC, RBC, BAB, DIS};
 
 }
 
