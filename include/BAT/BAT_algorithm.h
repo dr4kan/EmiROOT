@@ -1,7 +1,7 @@
 /*
 ###############################################################################
-# Emir: EmiR: Evolutionary minimization forR                                  #
-# Copyright (C) 2021 Davide Pagano & Lorenzo Sostero                          #
+# EmiROOT: Evolutionary minimization for ROOT                                  #
+# Copyright (C) 2022 Davide Pagano & Lorenzo Sostero                          #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -16,8 +16,8 @@
 */
 
 
-#ifndef EmiR_BAT_algorithm_h
-#define EmiR_BAT_algorithm_h
+#ifndef EmiROOT_BAT_algorithm_h
+#define EmiROOT_BAT_algorithm_h
 
 #include "Algorithm.h"
 #include "BATConfig.h"
