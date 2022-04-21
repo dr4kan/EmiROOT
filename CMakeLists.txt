@@ -5,8 +5,7 @@ include(GNUInstallDirs)
 include_directories(include)
 set(CMAKE_CXX_FLAGS "-std=c++17 -Werror -g -O3")
 
-# ls -1 src/*.cc
-# list of headers
+# list of source files
 file(GLOB_RECURSE EmiROOT_SRC ${PROJECT_SOURCE_DIR}/src/*.cc)
 add_library(EmiROOT SHARED ${EmiROOT_SRC})
 
