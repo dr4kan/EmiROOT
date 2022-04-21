@@ -19,7 +19,7 @@
 #ifndef EmiROOT_Nest_h
 #define EmiROOT_Nest_h
 
-#include "Individual.h"
+#include <Base/Individual.h>
 
 namespace EmiROOT {
 

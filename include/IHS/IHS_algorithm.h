@@ -19,7 +19,7 @@
 #ifndef EmiROOT_IHS_algorithm_h
 #define EmiROOT_IHS_algorithm_h
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 #include "IHSConfig.h"
 #include "IHSPopulation.h"
 

@@ -19,7 +19,7 @@
 #ifndef EmiROOT_Moth_h
 #define EmiROOT_Moth_h
 
-#include "Individual.h"
+#include <Base/Individual.h>
 
 namespace EmiROOT {
 

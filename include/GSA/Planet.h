@@ -19,7 +19,7 @@
 #ifndef EmiROOT_Planet_h
 #define EmiROOT_Planet_h
 
-#include "Individual.h"
+#include <Base/Individual.h>
 
 namespace EmiROOT {
 

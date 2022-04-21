@@ -19,7 +19,7 @@
 #ifndef EmiROOT_BAT_algorithm_h
 #define EmiROOT_BAT_algorithm_h
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 #include "BATConfig.h"
 #include "BATPopulation.h"
 

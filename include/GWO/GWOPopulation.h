@@ -21,7 +21,7 @@
 
 #include "Wolf.h"
 #include "GWOConfig.h"
-#include "Population.h"
+#include <Base/Population.h>
 
 namespace EmiROOT {
 

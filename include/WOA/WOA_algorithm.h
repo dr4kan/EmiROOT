@@ -19,7 +19,7 @@
 #ifndef EmiROOT_WOA_algorithm_h
 #define EmiROOT_WOA_algorithm_h
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 #include "WOAConfig.h"
 #include "WOAPopulation.h"
 

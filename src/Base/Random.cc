@@ -13,67 +13,87 @@
 # or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License    #
 # for more details: <https://www.gnu.org/licenses/>.                          #
 ###############################################################################
-*/
+ */
 
 
-#include "Config.h"
+#include <Base/Random.h>
 
+using std::chrono::duration_cast;
+using std::chrono::milliseconds;
+using std::chrono::system_clock;
 using namespace EmiROOT;
 
-Config::Config() {
-  m_nmax_iter = 0.;
-  m_nmax_iter_scost = 0.;
-  m_absolute_tol = 0.;
+Random::Random() {
+  m_seed = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-void Config::setNMaxIterations(std::size_t t) {
-  m_nmax_iter = t;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-void Config::setAbsoluteTol(double t) {
-  m_absolute_tol = t;
-}
+Random::Random(uint64_t seed) : m_seed(seed) {}
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-void Config::setNMaxIterationsAtSameCost(std::size_t t) {
-  m_nmax_iter_scost = t;
+double Random::rand() {
+  uint64_t x = next();
+  return toDouble(x);
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-void Config::setPopulationSize(std::size_t t) {
-  m_nparticles = t;
+double Random::rand(double t_min, double t_max) {
+  return (t_max - t_min)*rand() + t_min;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-std::size_t Config::getNMaxIterations() const {
-  return m_nmax_iter;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-double Config::getAbsoluteTol() const {
-  return m_absolute_tol;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-std::size_t Config::getNMaxIterationsSameCost() const {
-  return m_nmax_iter_scost;
+std::vector<double> Random::randVector(std::size_t n, double t_min, double t_max) {
+  std::vector<double> v(n);
+  for (std::size_t i = 0; i < n; ++i) v[i] = rand(t_min, t_max);
+  return v;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-std::size_t Config::getPopulationSize() const {
-  return m_nparticles;
+uint64_t Random::randUInt(uint64_t t_min, uint64_t t_max) {
+  uint64_t x, r;
+  do {
+    x = next();
+    r = x % (t_max - t_min);
+  } while (x - r > (t_min - t_max));
+  return r + t_min;
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+double Random::norm() {
+  double u1 = rand();
+  double u2 = rand();
+  double pi = 3.14159265358979323846;
+  return sqrt(-2*log(u1))*cos(2*pi*u2);
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-void addPopulationPosition(const std::vector<double>&) {
+double Random::norm(double t_mean, double t_sigma) {
+  return norm()*t_sigma + t_mean;
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
+
+uint64_t Random::next() {
+  uint64_t z = (m_seed += 0x9e3779b97f4a7c15);
+  z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9;
+  z = (z ^ (z >> 27)) * 0x94d049bb133111eb;
+  return z ^ (z >> 31);
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+
+double Random::toDouble(uint64_t x) {
+  union U {
+    uint64_t i;
+    double d;
+  };
+  U u = { UINT64_C(0x3FF) << 52 | x >> 12 };
+  return u.d - 1.0;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/

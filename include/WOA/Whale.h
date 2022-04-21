@@ -19,7 +19,7 @@
 #ifndef EmiROOT_Whale_h
 #define EmiROOT_Whale_h
 
-#include "Individual.h"
+#include <Base/Individual.h>
 
 namespace EmiROOT {
 

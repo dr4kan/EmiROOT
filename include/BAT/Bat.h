@@ -19,7 +19,7 @@
 #ifndef EmiROOT_Bat_h
 #define EmiROOT_Bat_h
 
-#include "Individual.h"
+#include <Base/Individual.h>
 
 namespace EmiROOT {
 

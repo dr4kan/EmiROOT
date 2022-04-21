@@ -19,7 +19,7 @@
 #ifndef EmiROOT_SAParticle_h
 #define EmiROOT_SAParticle_h
 
-#include "Individual.h"
+#include <Base/Individual.h>
 
 namespace EmiROOT {
 

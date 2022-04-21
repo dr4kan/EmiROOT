@@ -19,7 +19,7 @@
 #ifndef EmiROOT_PSConfig_h
 #define EmiROOT_PSConfig_h
 
-#include "Config.h"
+#include <Base/Config.h>
 
 namespace EmiROOT {
 

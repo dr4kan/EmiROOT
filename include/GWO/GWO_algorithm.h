@@ -19,7 +19,7 @@
 #ifndef EmiROOT_GWO_algorithm_h
 #define EmiROOT_GWO_algorithm_h
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 #include "GWOConfig.h"
 #include "GWOPopulation.h"
 

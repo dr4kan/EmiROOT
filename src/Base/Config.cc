@@ -13,43 +13,67 @@
 # or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License    #
 # for more details: <https://www.gnu.org/licenses/>.                          #
 ###############################################################################
- */
+*/
 
 
-#include "Individual.h"
+#include <Base/Config.h>
 
 using namespace EmiROOT;
 
-Individual::Individual() :
-m_position(0) {}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-Individual::Individual(int n) :
-m_position(n, 0),
-m_has_velocity(false) {
-  m_cost = std::numeric_limits<double>::max();
+Config::Config() {
+  m_nmax_iter = 0.;
+  m_nmax_iter_scost = 0.;
+  m_absolute_tol = 0.;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-void Individual::setCost(double t) {
-  m_cost = t;
+void Config::setNMaxIterations(std::size_t t) {
+  m_nmax_iter = t;
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+void Config::setAbsoluteTol(double t) {
+  m_absolute_tol = t;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-void Individual::setPosition(const Point& t) {
-  m_position = t;
-}
-
-std::size_t Individual::getDimension() const {
-  return m_position.size();
+void Config::setNMaxIterationsAtSameCost(std::size_t t) {
+  m_nmax_iter_scost = t;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-double Individual::getCost() {
-  return m_cost;
+void Config::setPopulationSize(std::size_t t) {
+  m_nparticles = t;
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+
+std::size_t Config::getNMaxIterations() const {
+  return m_nmax_iter;
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+double Config::getAbsoluteTol() const {
+  return m_absolute_tol;
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+std::size_t Config::getNMaxIterationsSameCost() const {
+  return m_nmax_iter_scost;
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+
+std::size_t Config::getPopulationSize() const {
+  return m_nparticles;
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+
+void addPopulationPosition(const std::vector<double>&) {
+
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/

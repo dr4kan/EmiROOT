@@ -19,7 +19,7 @@
 #ifndef EmiROOT_GA_algorithm_h
 #define EmiROOT_GA_algorithm_h
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 #include "GAConfig.h"
 #include "GAPopulation.h"
 

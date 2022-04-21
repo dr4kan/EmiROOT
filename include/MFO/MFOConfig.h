@@ -19,7 +19,7 @@
 #ifndef EmiROOT_MFOConfig_h
 #define EmiROOT_MFOConfig_h
 
-#include "Config.h"
+#include <Base/Config.h>
 
 namespace EmiROOT {
 

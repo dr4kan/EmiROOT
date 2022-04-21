@@ -21,7 +21,7 @@
 
 #include "Planet.h"
 #include "GSAConfig.h"
-#include "Population.h"
+#include <Base/Population.h>
 
 namespace EmiROOT {
 

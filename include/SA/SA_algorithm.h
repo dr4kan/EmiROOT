@@ -19,7 +19,7 @@
 #ifndef EmiROOT_SA_algorithm_h
 #define EmiROOT_SA_algorithm_h
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 #include "SAConfig.h"
 #include "SAPopulation.h"
 

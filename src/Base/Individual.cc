@@ -16,71 +16,40 @@
  */
 
 
-#include "Parameter.h"
+#include <Base/Individual.h>
 
 using namespace EmiROOT;
 
-Parameter::Parameter(const std::string& t_name,
-                     double t_min, double t_max,
-                     bool t_int) : m_name(t_name),
-                     m_min_val(t_min),
-                     m_max_val(t_max),
-                     m_integer(t_int) {}
+Individual::Individual() :
+m_position(0) {}
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-Parameter::Parameter() : Parameter("", 0., 0., false) {}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-Parameter::Parameter(const std::string& t_name) : Parameter(t_name, 0., 0., false) {}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-void Parameter::setName(const std::string& t_name) {
-  m_name = t_name;
+Individual::Individual(int n) :
+m_position(n, 0),
+m_has_velocity(false) {
+  m_cost = std::numeric_limits<double>::max();
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-void Parameter::setRange(double t_min,  double t_max) {
-  m_min_val = t_min;
-  m_max_val = t_max;
+void Individual::setCost(double t) {
+  m_cost = t;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-void Parameter::setIsInteger(bool t_int) {
-  m_integer = t_int;
+void Individual::setPosition(const Point& t) {
+  m_position = t;
+}
+
+std::size_t Individual::getDimension() const {
+  return m_position.size();
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-const std::string& Parameter::getName() const {
-  return m_name;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-double Parameter::getMin() const {
-  return m_min_val;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-double Parameter::getMax() const {
-  return m_max_val;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-double Parameter::getWidth() const {
-  return m_max_val-m_min_val;
-}
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-
-
-bool Parameter::isInteger() const {
-  return m_integer;
+double Individual::getCost() {
+  return m_cost;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/

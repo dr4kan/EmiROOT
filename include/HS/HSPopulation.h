@@ -19,9 +19,9 @@
 #ifndef EmiROOT_HSPopulation_h
 #define EmiROOT_HSPopulation_h
 
-#include "Individual.h"
+#include <Base/Individual.h>
 #include "HSConfig.h"
-#include "Population.h"
+#include <Base/Population.h>
 
 namespace EmiROOT {
 

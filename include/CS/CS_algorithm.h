@@ -19,7 +19,7 @@
 #ifndef EmiROOT_CS_algorithm_h
 #define EmiROOT_CS_algorithm_h
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 #include "CSConfig.h"
 #include "CSPopulation.h"
 

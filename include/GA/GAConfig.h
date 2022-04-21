@@ -19,7 +19,7 @@
 #ifndef EmiROOT_GAConfig_h
 #define EmiROOT_GAConfig_h
 
-#include "Config.h"
+#include <Base/Config.h>
 #include <string>
 
 namespace EmiROOT {

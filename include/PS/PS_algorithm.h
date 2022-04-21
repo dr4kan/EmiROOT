@@ -19,7 +19,7 @@
 #ifndef EmiROOT_PS_algorithm_h
 #define EmiROOT_PS_algorithm_h
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 #include "PSConfig.h"
 #include "PSPopulation.h"
 

@@ -21,7 +21,7 @@
 
 #include "Whale.h"
 #include "WOAConfig.h"
-#include "Population.h"
+#include <Base/Population.h>
 
 namespace EmiROOT {
 

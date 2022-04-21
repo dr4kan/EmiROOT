@@ -19,7 +19,7 @@
 #ifndef EmiROOT_GAChromosome_h
 #define EmiROOT_GAChromosome_h
 
-#include "Individual.h"
+#include <Base/Individual.h>
 
 namespace EmiROOT {
 

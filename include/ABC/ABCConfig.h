@@ -19,7 +19,7 @@
 #ifndef EmiROOT_ABCConfig_h
 #define EmiROOT_ABCConfig_h
 
-#include "Config.h"
+#include <Base/Config.h>
 
 namespace EmiROOT {
 

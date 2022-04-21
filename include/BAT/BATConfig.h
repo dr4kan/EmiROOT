@@ -19,7 +19,7 @@
 #ifndef EmiROOT_BATConfig_h
 #define EmiROOT_BATConfig_h
 
-#include "Config.h"
+#include <Base/Config.h>
 
 namespace EmiROOT {
 

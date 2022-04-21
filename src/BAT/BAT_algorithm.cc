@@ -16,7 +16,6 @@
 */
 
 
-#include "ProgressBar.h"
 #include <BAT/BAT_algorithm.h>
 
 using namespace EmiROOT;

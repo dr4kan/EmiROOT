@@ -16,7 +16,7 @@
 */
 
 
-#include "SearchSpace.h"
+#include <Base/SearchSpace.h>
 #include <iostream>
 
 using namespace EmiROOT;

@@ -17,7 +17,6 @@
 
 
 #include "ABC/ABCPopulation.h"
-#include "ProgressBar.h"
 
 using namespace EmiROOT;
 

@@ -21,7 +21,7 @@
 
 #include "Nest.h"
 #include "CSConfig.h"
-#include "Population.h"
+#include <Base/Population.h>
 
 namespace EmiROOT {
 

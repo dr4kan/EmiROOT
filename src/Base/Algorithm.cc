@@ -16,7 +16,7 @@
 */
 
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 
 using namespace EmiROOT;
 

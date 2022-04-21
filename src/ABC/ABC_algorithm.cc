@@ -16,7 +16,6 @@
 */
 
 
-#include "ProgressBar.h"
 #include <ABC/ABC_algorithm.h>
 
 using namespace EmiROOT;

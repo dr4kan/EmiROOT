@@ -21,7 +21,7 @@
 
 #include "SAParticle.h"
 #include "SAConfig.h"
-#include "Population.h"
+#include <Base/Population.h>
 
 namespace EmiROOT {
 

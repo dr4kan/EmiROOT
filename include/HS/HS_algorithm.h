@@ -19,7 +19,7 @@
 #ifndef EmiROOT_HS_algorithm_h
 #define EmiROOT_HS_algorithm_h
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 #include "HSConfig.h"
 #include "HSPopulation.h"
 

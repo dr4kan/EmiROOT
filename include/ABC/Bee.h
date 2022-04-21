@@ -19,7 +19,7 @@
 #ifndef EmiROOT_Bee_h
 #define EmiROOT_Bee_h
 
-#include "Individual.h"
+#include <Base/Individual.h>
 
 namespace EmiROOT {
 

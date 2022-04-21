@@ -21,7 +21,7 @@
 
 #include "Bee.h"
 #include "ABCConfig.h"
-#include "Population.h"
+#include <Base/Population.h>
 
 namespace EmiROOT {
 

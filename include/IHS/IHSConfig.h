@@ -19,7 +19,7 @@
 #ifndef EmiROOT_IHSConfig_h
 #define EmiROOT_IHSConfig_h
 
-#include "Config.h"
+#include <Base/Config.h>
 
 namespace EmiROOT {
 

@@ -19,7 +19,7 @@
 #ifndef EmiROOT_MFO_algorithm_h
 #define EmiROOT_MFO_algorithm_h
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 #include "MFOConfig.h"
 #include "MFOPopulation.h"
 

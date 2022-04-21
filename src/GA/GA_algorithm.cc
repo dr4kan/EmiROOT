@@ -16,7 +16,6 @@
 */
 
 
-#include "ProgressBar.h"
 #include <GA/GA_algorithm.h>
 
 using namespace EmiROOT;

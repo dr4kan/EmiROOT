@@ -21,7 +21,7 @@
 
 #include "PSParticle.h"
 #include "PSConfig.h"
-#include "Population.h"
+#include <Base/Population.h>
 
 namespace EmiROOT {
 

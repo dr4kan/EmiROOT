@@ -19,7 +19,7 @@
 #ifndef EmiROOT_PSParticle_h
 #define EmiROOT_PSParticle_h
 
-#include "Individual.h"
+#include <Base/Individual.h>
 
 namespace EmiROOT {
 

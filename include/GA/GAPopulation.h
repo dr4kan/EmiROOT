@@ -21,7 +21,7 @@
 
 #include "GAChromosome.h"
 #include "GAConfig.h"
-#include "Population.h"
+#include <Base/Population.h>
 
 namespace EmiROOT {
 

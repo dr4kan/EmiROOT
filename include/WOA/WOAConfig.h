@@ -19,7 +19,7 @@
 #ifndef EmiROOT_WOAConfig_h
 #define EmiROOT_WOAConfig_h
 
-#include "Config.h"
+#include <Base/Config.h>
 
 namespace EmiROOT {
 

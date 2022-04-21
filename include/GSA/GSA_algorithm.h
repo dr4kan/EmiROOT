@@ -19,7 +19,7 @@
 #ifndef EmiROOT_GSA_algorithm_h
 #define EmiROOT_GSA_algorithm_h
 
-#include "Algorithm.h"
+#include <Base/Algorithm.h>
 #include "GSAConfig.h"
 #include "GSAPopulation.h"
 

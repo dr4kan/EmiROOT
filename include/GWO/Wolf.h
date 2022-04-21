@@ -19,7 +19,7 @@
 #ifndef EmiROOT_Wolf_h
 #define EmiROOT_Wolf_h
 
-#include "Individual.h"
+#include <Base/Individual.h>
 
 namespace EmiROOT {
 

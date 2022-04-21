@@ -16,7 +16,6 @@
 */
 
 
-#include "ProgressBar.h"
 #include <CS/CS_algorithm.h>
 
 using namespace EmiROOT;
