@@ -24,6 +24,7 @@
 #include "Types.h"
 #include "Population.h"
 #include "Results.h"
+#include "ProgressBar.h"
 #include <string>
 #include <fstream>
 
@@ -39,7 +40,6 @@ namespace EmiROOT {
     void setSilent(bool);
     void setMaximize(bool);
     void setOOB(std::string);
-    void setSeed(uint64_t);
     void setConstrainedMethod(std::string);
     void setInitialPopulation(const PopulationState&);
     void setAlgoName(std::string);
@@ -48,10 +48,13 @@ namespace EmiROOT {
     void setMaxPenaltyCoeff(double);
     void setCostrInitPop(bool);
     OptimizationResults   getResults();
+    virtual void setSeed(uint64_t) = 0;
+    virtual void minimize() = 0;
 
   protected:
     double rand();
     void addPopulationPosition(std::vector<std::vector<double> >);
+    ProgressBar       m_progress_bar;
 
     Function          m_obj_function;
     Constraints       m_constraints;

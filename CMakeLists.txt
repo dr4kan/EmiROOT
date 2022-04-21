@@ -7,11 +7,11 @@ set(CMAKE_CXX_FLAGS "-std=c++17 -Werror -g -O3")
 
 # ls -1 src/*.cc
 # list of headers
-file(GLOB EmiROOT_SRC ${PROJECT_SOURCE_DIR}/src/*.cc)
+file(GLOB_RECURSE EmiROOT_SRC ${PROJECT_SOURCE_DIR}/src/*.cc)
 add_library(EmiROOT SHARED ${EmiROOT_SRC})
 
 # list of headers
-file(GLOB EmiROOT_INCLUDE ${PROJECT_SOURCE_DIR}/include/*.h)
+file(GLOB_RECURSE EmiROOT_INCLUDE ${PROJECT_SOURCE_DIR}/include/*.h)
 
 set_target_properties(
     EmiROOT PROPERTIES

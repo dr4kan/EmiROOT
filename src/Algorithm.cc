@@ -27,7 +27,11 @@ Algorithm::Algorithm(Function obj_function) :
   m_silent(false),
   m_maximize(false),
   m_oob_sol(RBC),
-  m_algo_name("") {}
+  m_algo_name("") {
+    m_progress_bar.set_bar_width(50);
+    m_progress_bar.fill_bar_progress_with("■");
+    m_progress_bar.fill_bar_remainder_with(" ");
+  }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
