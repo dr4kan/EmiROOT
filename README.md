@@ -18,6 +18,20 @@ Classical minimization methods, like *gradient descent* or *quasi-Newton techniq
 
 Unlike other available tools, EmiR can be used not only for unconstrained problems, but also for problems subjected to inequality constraints and for integer or mixed-integer problems. 
 
+
+## Installation
+
+```
+git clone https://github.com/dr4kan/EmiROOT.git
+cd EmiROOT 
+mkdir build
+cd build
+cmake ..
+make
+make install
+```
+
+
 ## Example of usage
 
 ```
