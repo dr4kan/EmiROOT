@@ -24,7 +24,8 @@ EmiROOT can be used not only for unconstrained problems, but also for problems s
 If you use EmiROOT or EmiR, please cite the following work:
 
 ```
-Pagano, Davide, e Lorenzo Sostero. «EmiR: Evolutionary Minimization for R». SoftwareX 18, 101083 (2022). https://doi.org/10.1016/j.softx.2022.101083.
+Pagano, Davide, e Lorenzo Sostero. «EmiR: Evolutionary Minimization for R». SoftwareX 18, 101083 (2022). 
+https://doi.org/10.1016/j.softx.2022.101083.
 ```
 
 
